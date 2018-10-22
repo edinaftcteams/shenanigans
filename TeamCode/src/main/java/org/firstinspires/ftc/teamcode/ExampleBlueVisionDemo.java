@@ -36,16 +36,16 @@ import java.util.Locale;
  * 
  * 
  * By downloading, copying, installing or using the software you agree to this license.
- * If you do not agree to this license, do not download, install,
- * copy or use the software.
- * -------------------------------------------------------------------------------------
- * This is a sample opmode that demonstrates the use of an OpenCVPipeline with FTC code.
- * When the x button is pressed on controller one, the camera is set to show areas of the image
- * where a certain color is, in this case, blue.
- *
  * Additionally, the centers of the bounding rectangles of the contours are sent to telemetry.
  */
 @TeleOp(name="Example: Blue Vision Demo")
+ /* If you do not agree to this license, do not download, install,
+         * copy or use the software.
+         * -------------------------------------------------------------------------------------
+         * This is a sample opmode that demonstrates the use of an OpenCVPipeline with FTC code.
+         * When the x button is pressed on controller one, the camera is set to show areas of the image
+         * where a certain color is, in this case, blue.
+         */
 public class ExampleBlueVisionDemo extends OpMode {
     private ExampleBlueVision blueVision;
     @Override

@@ -40,7 +40,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove a @Disabled the on the next line or two (if present) to add this opmode to the Driver Station OpMode list,
  * or add a @Disabled annotation to prevent this OpMode from being added to the Driver Station
  */
-@TeleOp
+@TeleOp(name = "Test9_29_19")
 
 public class Test9_29_18 extends LinearOpMode {
     private Gyroscope imu;
@@ -52,7 +52,8 @@ public class Test9_29_18 extends LinearOpMode {
     private Servo markerDrop;
     private Blinker expansion_Hub_2;
     private Blinker expansion_Hub_3;
-    
+
+
 
 
     @Override
@@ -106,9 +107,9 @@ public class Test9_29_18 extends LinearOpMode {
 
         // mechanical people need a higher gear ratio
         // run until the end of the match (driver presses STOP)
-        double tgtPower = 0.0;
-        double tgtPower2= 0.0;
+
         double liftPower = 1.0;
+        double turn = 0.0;
         boolean liftUp = false;
         boolean liftDown = false;
     
@@ -117,11 +118,35 @@ public class Test9_29_18 extends LinearOpMode {
         int frontRightPosition = 0;
         int rearLeftPosition = 0;
         int rearRightPosition = 0;
-       
+
+        double drive;
+        double left;
+        double right;
+        double max = 1.0;
         
         while (opModeIsActive()) {
-            tgtPower2 = -this.gamepad1.left_stick_y;
-            tgtPower = -this.gamepad1.right_stick_y;
+
+
+            //Code for aracade drive
+
+            drive = -gamepad1.left_stick_y;
+            turn  =  gamepad1.right_stick_x;
+
+            // Combine drive and turn for blended motion.
+            left  = drive + turn;
+            right = drive - turn;
+
+            // Normalize the values so neither exceed +/- 1.0
+            max = Math.max(Math.abs(left), Math.abs(right));
+            if (max > 1.0)
+            {
+                left /= max;
+                right /= max;
+            }
+
+
+
+
             liftUp = this.gamepad1.right_bumper;
             liftDown = this.gamepad1.left_bumper;
             if(liftUp){
@@ -140,10 +165,10 @@ public class Test9_29_18 extends LinearOpMode {
                 markerDrop.setPosition(0.55);
             }
             
-            frontRight.setPower(tgtPower);
-            frontLeft.setPower(tgtPower2);
-            rearRight.setPower(tgtPower);
-            rearLeft.setPower(tgtPower2);
+            frontRight.setPower(right);
+            frontLeft.setPower(left);
+            rearRight.setPower(right);
+            rearLeft.setPower(left);
             
             liftPosition = liftMotor.getCurrentPosition();
             
