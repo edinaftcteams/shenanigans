@@ -30,6 +30,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -53,15 +54,18 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class HardwarePushbot
 {
     /* Public OpMode members. */
-    public DcMotor  frontLeft   = null;
-    public DcMotor  frontRight  = null;
-    public DcMotor  rearLeft = null;
-    public DcMotor  rearRight = null;
+    public DcMotor  frontLeft  = null;
+    public DcMotor  frontRight = null;
+    public DcMotor  rearLeft   = null;
+    public DcMotor  rearRight  = null;
+    public DcMotor  liftMotor  = null;
+    public Servo    markerDrop = null;
+
     //public DcMotor  leftArm     = null;
     //public Servo    leftClaw    = null;
     //public Servo    rightClaw   = null;
 
-    //public static final double MID_SERVO       =  0.5 ;
+    public static final double MID_SERVO       =  0.5 ;
     //public static final double ARM_UP_POWER    =  0.45 ;
     //public static final double ARM_DOWN_POWER  = -0.45 ;
 
@@ -84,13 +88,14 @@ public class HardwarePushbot
         frontLeft = hwMap.get(DcMotor.class, "Front Left");
         rearRight = hwMap.get(DcMotor.class, "Rear Right");
         rearLeft = hwMap.get(DcMotor.class, "Rear Left");
+        liftMotor = hwMap.get(DcMotor.class, "Lift Motor");
         
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearLeft.setDirection(DcMotor.Direction.FORWARD);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
-        
+        liftMotor.setDirection(DcMotor.Direction.FORWARD);
 
         // Set all motors to zero power
         frontLeft.setPower(0);
@@ -106,9 +111,9 @@ public class HardwarePushbot
         //leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
-        //leftClaw  = hwMap.get(Servo.class, "left_hand");
+        markerDrop  = hwMap.get(Servo.class, "Marker Drop");
         //rightClaw = hwMap.get(Servo.class, "right_hand");
-        //leftClaw.setPosition(MID_SERVO);
+        markerDrop.setPosition(MID_SERVO);
         //rightClaw.setPosition(MID_SERVO);
     }
  }

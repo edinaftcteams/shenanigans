@@ -94,7 +94,7 @@ public class Test9_29_18Rev1 extends LinearOpMode {
         
         //***Enable Brake Mode***
      
-        //Should enable brakemode on the ellevator motor
+        //Should enable brakemode on the elevator motor
         liftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         telemetry.addData("Status", "Initialized");
@@ -202,11 +202,12 @@ public class Test9_29_18Rev1 extends LinearOpMode {
 
 
         // run until the end of the match (driver presses STOP)
-/*        while (opModeIsActive()) {
+        //why was this commented?
+       while (opModeIsActive()) {
             telemetry.addData("Status", "Running");
             telemetry.update();
 
         }
-        */
+
     }
 }
