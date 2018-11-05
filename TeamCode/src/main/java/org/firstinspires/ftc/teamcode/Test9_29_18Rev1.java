@@ -81,12 +81,14 @@ public class Test9_29_18Rev1 extends LinearOpMode {
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearLeft.setDirection(DcMotor.Direction.FORWARD);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
+        liftMotor.setDirection(DcMotor.Direction.FORWARD);
         
         //***Reset Encoders***
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rearLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rearRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
         frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rearLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -203,11 +205,11 @@ public class Test9_29_18Rev1 extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         //why was this commented?
-       while (opModeIsActive()) {
+        /*while (opModeIsActive()) {
             telemetry.addData("Status", "Running");
             telemetry.update();
 
-        }
+        }*/
 
     }
 }
