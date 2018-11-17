@@ -111,7 +111,7 @@ public class Test9_29_18Rev1 extends LinearOpMode {
         // mechanical people need a higher gear ratio
         // run until the end of the match (driver presses STOP)
 
-        double liftPower = 1.0;
+        double liftPower = 0.5;
         double turn = 0.0;
         boolean liftUp = false;
         boolean liftDown = false;
@@ -130,14 +130,16 @@ public class Test9_29_18Rev1 extends LinearOpMode {
         while (opModeIsActive()) {
 
 
-            //Code for aracade drive
+            left = -gamepad1.left_stick_y;
+            right = -gamepad1.right_stick_y;
 
-            drive = -gamepad1.left_stick_y;
-            turn  =  gamepad1.right_stick_x;
+            //Code for aracade drive
+           // drive = -gamepad1.left_stick_y;
+           // turn  =  gamepad1.right_stick_x;
 
             // Combine drive and turn for blended motion.
-            left  = drive + turn;
-            right = drive - turn;
+            //left  = drive + turn;
+            //right = drive - turn;
 
             // Normalize the values so neither exceed +/- 1.0
             max = Math.max(Math.abs(left), Math.abs(right));
@@ -150,8 +152,8 @@ public class Test9_29_18Rev1 extends LinearOpMode {
 
 
 
-            liftUp = this.gamepad1.right_bumper;
-            liftDown = this.gamepad1.left_bumper;
+            liftUp = this.gamepad2.left_bumper;
+            liftDown = this.gamepad2.right_bumper;
             if(liftUp){
                 liftMotor.setPower(-liftPower);
             } else if(liftDown) {
@@ -167,11 +169,20 @@ public class Test9_29_18Rev1 extends LinearOpMode {
             if(gamepad1.y){
                 markerDrop.setPosition(0.55);
             }
-            
-            frontRight.setPower(right);
-            frontLeft.setPower(left);
-            rearRight.setPower(right);
-            rearLeft.setPower(left);
+
+            if(gamepad1.left_bumper || gamepad1.right_bumper){
+                frontRight.setPower(right/2);
+                frontLeft.setPower(left/2);
+                rearRight.setPower(right/2);
+                rearLeft.setPower(left/2);
+            }
+            else{
+                frontRight.setPower(right);
+                frontLeft.setPower(left);
+                rearRight.setPower(right);
+                rearLeft.setPower(left);
+            }
+
             
             liftPosition = liftMotor.getCurrentPosition();
             

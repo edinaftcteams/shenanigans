@@ -58,7 +58,7 @@ public class AutoNumberOne extends LinearOpMode {
             (WHEEL_DIAMETER_INCHES * 3.1415);
     static final double DRIVE_SPEED = 1;
     static final double TURN_SPEED = 0.5;
-    static final double LIFT_SPEED = 0.45;
+    static final double LIFT_SPEED = 0.5;
 
     @Override
     public void runOpMode() {
@@ -83,8 +83,8 @@ public class AutoNumberOne extends LinearOpMode {
         robot.frontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rearRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rearLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.liftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
+        robot.liftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER); //Changed this to test
+        robot.liftMotor.setPower(-.2);
 
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0", "Starting at %7d :%7d",
@@ -95,12 +95,14 @@ public class AutoNumberOne extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
+        robot.liftMotor.setPower(0.0);
+
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED, 2.0, 2.0, 1.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED, 10.0, -10.0, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -4.0, -4.0, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
-        encoderLiftDrive(LIFT_SPEED, 4.0, 3.0);
+        //encoderDrive(DRIVE_SPEED, 2.0, 2.0, 1.0);  // S1: Forward 2 Inches with 1 Sec timeout
+      //  encoderDrive(TURN_SPEED, 10.0, -10.0, 4.0);  // S2: Turn Right 10 Inches with 4 Sec timeout
+      //  encoderDrive(DRIVE_SPEED, -4.0, -4.0, 4.0);  // S3: Reverse 4 Inches with 4 Sec timeout
+      //  encoderLiftDrive(LIFT_SPEED, 2.0, 3.0);  //S4: Up 2 inches with a 3 sec timeout
 
 
         sleep(1000);     // pause for servos to move
@@ -110,7 +112,7 @@ public class AutoNumberOne extends LinearOpMode {
     }
 
     /*
-     *  Method to perfmorm a relative move, based on encoder counts.
+     *  Method to perform a relative move, based on encoder counts.
      *  Encoders are not reset as the move is based on the current position.
      *  Move will stop if any of three conditions occur:
      *  1) Move gets to the desired position
@@ -118,7 +120,7 @@ public class AutoNumberOne extends LinearOpMode {
      *  3) Driver stops the opmode running.
      */
 
-    public void encoderLiftDrive(double speed, double inches, double timeoutS) {
+   /* public void encoderLiftDrive(double speed, double inches, double timeoutS) {
         //this is for how high off origin the lift arm is
         int newHeightTarget;
 
@@ -224,6 +226,6 @@ public class AutoNumberOne extends LinearOpMode {
 
                 //  sleep(250);   // optional pause after each move
             }
-        }
+        }*/
 
     }
