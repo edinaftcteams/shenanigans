@@ -51,13 +51,16 @@ public class AutoNumberOne extends LinearOpMode {
     HardwarePushbot robot = new HardwarePushbot();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
 
-    static final double COUNTS_PER_MOTOR_REV = 1128;    // eg: TETRIX Motor Encoder
+    static final double COUNTS_PER_MOTOR_REV = 1120;    // eg: TETRIX Motor Encoder
     static final double DRIVE_GEAR_REDUCTION = 1.0;     // This is < 1.0 if geared UP
     static final double WHEEL_DIAMETER_INCHES = 4.0;     // For figuring circumference
+    static final double GEAR_DIAMETER_INCHES = 1.0;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
+    static final double COUNTS_PER_INCH_GEAR = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
+            (GEAR_DIAMETER_INCHES * 3.1415);
     static final double DRIVE_SPEED = 1.0;
-    static final double TURN_SPEED = 0.50;
+    static final double TURN_SPEED = 0.20;
     static final double LIFT_SPEED = 0.40;
 
     @Override
@@ -105,11 +108,11 @@ public class AutoNumberOne extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        //encoderLiftDrive(LIFT_SPEED, 1.0, 3.0);                   // S1: Up 2 Inches with a 3 Sec timeout
-        encoderDrive(DRIVE_SPEED, 1.0, -1.0, 4.0);               // S2: Back 2 Inches with 1 Sec timeout
-       // encoderLiftDrive(LIFT_SPEED, -4.0, 3.0);                  // S3: Down 4 Inches with a 3 Sec timeout
-        encoderDrive(DRIVE_SPEED, -1.0, 1.0, 4.0);               // S4: Reverse 4 Inches with 4 Sec timeout
-        //encoderDrive(DRIVE_SPEED, -4.0, 4.0, 4.0);                // S5: Turn 4 Inches Left with 4 Sec timeout
+        encoderLiftDrive(LIFT_SPEED, 2.0, 3.0);                               // S1: Up 2 Inches with a 3 Sec timeout
+        encoderDrive(DRIVE_SPEED, 12.0, 12.0, 4.0);               // S2: Forward 6 Inches with 1 Sec timeout
+       // encoderLiftDrive(LIFT_SPEED, -4.0, 3.0);                                            // S3: Down 4 Inches with a 3 Sec timeout
+        encoderDrive(DRIVE_SPEED, -12.0, -12.0, 4.0);             // S4: Reverse 6 Inches with 4 Sec timeout
+        //encoderDrive(DRIVE_SPEED, -4.0, 4.0, 4.0);                                          // S5: Turn 4 Inches Left with 4 Sec timeout
 
 
         sleep(1000);     // pause for servos to move
@@ -132,7 +135,7 @@ public class AutoNumberOne extends LinearOpMode {
             if (opModeIsActive()) {
 
                 // Determine new target position, and pass to motor controller
-                newHeightTarget = robot.liftMotor.getCurrentPosition() + (int) (inches * COUNTS_PER_INCH);
+                newHeightTarget = robot.liftMotor.getCurrentPosition() + (int) (inches * COUNTS_PER_INCH_GEAR);
                 robot.liftMotor.setTargetPosition(newHeightTarget);
 
                 // Turn On RUN_TO_POSITION
