@@ -133,23 +133,22 @@ public class Test9_29_18Rev1 extends LinearOpMode {
             left = -gamepad1.left_stick_y;
             right = -gamepad1.right_stick_y;
 
-            //Code for aracade drive
-           // drive = -gamepad1.left_stick_y;
-           // turn  =  gamepad1.right_stick_x;
+            /*Code for aracade drive
+            drive = -gamepad1.left_stick_y;
+            turn  =  gamepad1.right_stick_x;
 
             // Combine drive and turn for blended motion.
-            //left  = drive + turn;
-            //right = drive - turn;
+            left  = drive + turn;
+            right = drive - turn;*/
 
             // Normalize the values so neither exceed +/- 1.0
-            max = Math.max(Math.abs(left), Math.abs(right));
+            //commented out to see if it helps with the lag
+           /* max = Math.max(Math.abs(left), Math.abs(right));
             if (max > 1.0)
             {
                 left /= max;
                 right /= max;
-            }
-
-
+            }*/
 
 
             liftUp = this.gamepad2.left_bumper;
