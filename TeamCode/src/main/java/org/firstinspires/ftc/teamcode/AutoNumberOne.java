@@ -59,8 +59,8 @@ public class AutoNumberOne extends LinearOpMode {
             (WHEEL_DIAMETER_INCHES * 3.1415);
     static final double COUNTS_PER_INCH_GEAR = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (GEAR_DIAMETER_INCHES * 3.1415);
-    static final double DRIVE_SPEED = 1.0;
-    static final double TURN_SPEED = 0.20;
+    static final double DRIVE_SPEED = 0.5;
+    static final double TURN_SPEED = 0.4;
     static final double LIFT_SPEED = 0.40;
 
     @Override
