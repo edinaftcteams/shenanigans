@@ -108,9 +108,9 @@ public class AutoNumberOne extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderLiftDrive(LIFT_SPEED, 2.0, 3.0);                               // S1: Up 2 Inches with a 3 Sec timeout
-        encoderDrive(DRIVE_SPEED, 12.0, 12.0, 4.0);               // S2: Forward 6 Inches with 1 Sec timeout
-       // encoderLiftDrive(LIFT_SPEED, -4.0, 3.0);                                            // S3: Down 4 Inches with a 3 Sec timeout
+        encoderLiftDrive(LIFT_SPEED, 3.0, 3.0);                               // S1: Up 2 Inches with a 3 Sec timeout
+        encoderDrive(DRIVE_SPEED, -6.0, -6.0, 4.0);               // S2: Forward 6 Inches with 1 Sec timeout
+        encoderLiftDrive(LIFT_SPEED, -7.0, 3.0);                                            // S3: Down 4 Inches with a 3 Sec timeout
         encoderDrive(DRIVE_SPEED, -12.0, -12.0, 4.0);             // S4: Reverse 6 Inches with 4 Sec timeout
         //encoderDrive(DRIVE_SPEED, -4.0, 4.0, 4.0);                                          // S5: Turn 4 Inches Left with 4 Sec timeout
 

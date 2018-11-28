@@ -118,7 +118,7 @@ public class HardwarePushbot
         // Define and initialize ALL installed servos.
         markerDrop  = hwMap.get(Servo.class, "Marker Drop");
         //rightClaw = hwMap.get(Servo.class, "right_hand");
-        markerDrop.setPosition(SERVO);
+        //markerDrop.setPosition(SERVO);
         //rightClaw.setPosition(MID_SERVO);
     }
  }
