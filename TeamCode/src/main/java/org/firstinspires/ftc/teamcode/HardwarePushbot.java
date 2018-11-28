@@ -59,13 +59,14 @@ public class HardwarePushbot
     public DcMotor  rearLeft   = null;
     public DcMotor  rearRight  = null;
     public DcMotor  liftMotor  = null;
+    public DcMotor  sweepMotor = null;
     public Servo    markerDrop = null;
 
     //public DcMotor  leftArm     = null;
     //public Servo    leftClaw    = null;
     //public Servo    rightClaw   = null;
 
-    public static final double MID_SERVO       =  0.5 ;
+    public static final double SERVO       =  0.7 ;
     //public static final double ARM_UP_POWER    =  0.45 ;
     //public static final double ARM_DOWN_POWER  = -0.45 ;
 
@@ -88,6 +89,7 @@ public class HardwarePushbot
         frontLeft = hwMap.get(DcMotor.class, "Front Left");
         rearRight = hwMap.get(DcMotor.class, "Rear Right");
         rearLeft = hwMap.get(DcMotor.class, "Rear Left");
+        sweepMotor = hwMap.get(DcMotor.class, "Sweep Motor");
         liftMotor = hwMap.get(DcMotor.class, "Lift Motor");
         
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
@@ -95,6 +97,7 @@ public class HardwarePushbot
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearLeft.setDirection(DcMotor.Direction.FORWARD);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
+        sweepMotor.setDirection(DcMotor.Direction.FORWARD);
         liftMotor.setDirection(DcMotor.Direction.FORWARD);
 
         // Set all motors to zero power
@@ -102,6 +105,8 @@ public class HardwarePushbot
         frontRight.setPower(0);
         rearLeft.setPower(0);
         rearRight.setPower(0);
+        sweepMotor.setPower(0);
+        liftMotor.setPower(0);
         //leftArm.setPower(0);
 
         // Set all motors to run without encoders.
@@ -113,7 +118,7 @@ public class HardwarePushbot
         // Define and initialize ALL installed servos.
         markerDrop  = hwMap.get(Servo.class, "Marker Drop");
         //rightClaw = hwMap.get(Servo.class, "right_hand");
-        markerDrop.setPosition(MID_SERVO);
+        markerDrop.setPosition(SERVO);
         //rightClaw.setPosition(MID_SERVO);
     }
  }

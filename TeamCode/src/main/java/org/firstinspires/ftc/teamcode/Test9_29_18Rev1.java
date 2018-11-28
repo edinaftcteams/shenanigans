@@ -50,6 +50,7 @@ public class Test9_29_18Rev1 extends LinearOpMode {
     private DcMotor rearLeft;
     private DcMotor rearRight;
     private DcMotor liftMotor;
+    private DcMotor sweepMotor;
     private Servo markerDrop;
     private Blinker expansion_Hub_2;
     private Blinker expansion_Hub_3;
@@ -66,6 +67,7 @@ public class Test9_29_18Rev1 extends LinearOpMode {
         frontRight = hardwareMap.get(DcMotor.class, "Front Right");
         rearLeft = hardwareMap.get(DcMotor.class, "Rear Left");
         rearRight = hardwareMap.get(DcMotor.class, "Rear Right");
+        sweepMotor = hardwareMap.get(DcMotor.class, "Sweep Motor");
         liftMotor = hardwareMap.get(DcMotor.class, "Lift Motor");
         
         //***Servos***
@@ -81,6 +83,7 @@ public class Test9_29_18Rev1 extends LinearOpMode {
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearLeft.setDirection(DcMotor.Direction.FORWARD);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
+        sweepMotor.setDirection(DcMotor.Direction.FORWARD);
         liftMotor.setDirection(DcMotor.Direction.FORWARD);
         
         //***Reset Encoders***
@@ -122,7 +125,7 @@ public class Test9_29_18Rev1 extends LinearOpMode {
         int rearLeftPosition = 0;
         int rearRightPosition = 0;
 
-        double drive;
+        double forward;
         double left;
         double right;
         double max = 1.0;
@@ -132,6 +135,8 @@ public class Test9_29_18Rev1 extends LinearOpMode {
 
             left = -gamepad1.left_stick_y;
             right = -gamepad1.right_stick_y;
+
+            forward = -gamepad2.left_stick_y;
 
             /*Code for aracade drive
             drive = -gamepad1.left_stick_y;
@@ -168,7 +173,7 @@ public class Test9_29_18Rev1 extends LinearOpMode {
             if(gamepad1.y){
                 markerDrop.setPosition(0.55);
             }
-
+            //programs chassis
             if(gamepad1.left_bumper || gamepad1.right_bumper){
                 frontRight.setPower(right/2);
                 frontLeft.setPower(left/2);
@@ -180,6 +185,13 @@ public class Test9_29_18Rev1 extends LinearOpMode {
                 frontLeft.setPower(left);
                 rearRight.setPower(right);
                 rearLeft.setPower(left);
+            }
+            //programs sweep arm movement
+            if(gamepad2.left_stick_y>0.1) {
+                sweepMotor.setPower(forward);
+            }
+            else{
+                sweepMotor.setPower(0);
             }
 
             
