@@ -104,15 +104,16 @@ public class AutoNumberOne extends LinearOpMode {
         waitForStart();
 
         robot.liftMotor.setPower(0.0);
-        sleep(4000);
+        sleep(2000);
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderLiftDrive(LIFT_SPEED, 3.0, 3.0);                               // S1: Up 2 Inches with a 3 Sec timeout
-        encoderDrive(DRIVE_SPEED, -6.0, -6.0, 4.0);               // S2: Forward 6 Inches with 1 Sec timeout
-        encoderLiftDrive(LIFT_SPEED, -7.0, 3.0);                                            // S3: Down 4 Inches with a 3 Sec timeout
-        encoderDrive(DRIVE_SPEED, -12.0, -12.0, 4.0);             // S4: Reverse 6 Inches with 4 Sec timeout
-        //encoderDrive(DRIVE_SPEED, -4.0, 4.0, 4.0);                                          // S5: Turn 4 Inches Left with 4 Sec timeout
+        encoderLiftDrive(LIFT_SPEED, 4.0, 3.0);                                 // S1: Up 3 Inches with a 3 Sec timeout
+        encoderDrive(DRIVE_SPEED, -6.0, -6.0, 4.0);               // S2: Back 6 Inches with 4 Sec timeout
+        encoderLiftDrive(LIFT_SPEED, -10.0, 3.0);                                // S3: Down 7 Inches with a 3 Sec timeout
+        encoderDrive(DRIVE_SPEED, -50.8, -44.5, 4.0);             // S4: Reverse 25.5 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, -4.0, 4.0, 4.0);                // S5: Turn 4 Inches Left with 4 Sec timeout
+        robot.markerDrop.setPosition(.52);
 
 
         sleep(1000);     // pause for servos to move
