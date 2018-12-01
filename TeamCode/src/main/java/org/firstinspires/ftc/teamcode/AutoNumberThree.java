@@ -43,7 +43,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Crater_Side_Test2", group="Pushbot")
+@Autonomous(name="Crater_Side_Backup", group="Pushbot")
 //@Disabled
 public class AutoNumberThree extends LinearOpMode {
 
@@ -101,7 +101,10 @@ public class AutoNumberThree extends LinearOpMode {
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
-        waitForStart();
+        while(!opModeIsActive()&&!isStopRequested()){
+            telemetry.addData("Status", "Waiting in Init");
+            telemetry.update();
+        }
 
         robot.liftMotor.setPower(0.0);
         sleep(2000);
@@ -112,11 +115,11 @@ public class AutoNumberThree extends LinearOpMode {
         encoderLiftDrive(LIFT_SPEED, 4.0, 3.0);                                 // S1: Up 3 Inches with a 3 Sec timeout
         encoderDrive(DRIVE_SPEED, -6.0, -6.0, 4.0);                             // S2: Back 6 Inches with 4 Sec timeout
         encoderLiftDrive(LIFT_SPEED, -10.0, 3.0);                               // S3: Down 10 Inches with a 3 Sec timeout
-        encoderDrive(DRIVE_SPEED, -35.8, -35.8, 4.0);                           // S4: Reverse 35.8 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -6.0, 6.0, 4.0);                              // S5: Turn 6 Inches Left with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -20.0, -20.0, 4.0);                           // S6: Move forwards 20 inches
-        encoderDrive(DRIVE_SPEED,-4.0, 4.0, 4.0);                               // S7: Turn left 4 inches
-        encoderDrive(DRIVE_SPEED, -90.0, -90.0, 4.0);                           // S8: Move forwards 90 inches
+        encoderDrive(DRIVE_SPEED, -14.0, -14.0, 4.0);                           // S4: Reverse 35.8 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, -11.0, 11.0, 4.0);                              // S5: Turn 6 Inches Left with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, -30.0, -30.0, 4.0);                           // S6: Move forwards 20 inches
+        encoderDrive(DRIVE_SPEED,-6.0, 6.0, 4.0);                               // S7: Turn left 4 inches
+        encoderDrive(DRIVE_SPEED, -60.0, -60.0, 4.0);                           // S8: Move forwards 90 inches
         robot.markerDrop.setPosition(.52);                                      // S9: Drop the marker
         sleep(1000);                                                            // S10: Pause for the marker to drop
         encoderDrive(DRIVE_SPEED, 22.0, 22.0, 4.0);                             // S11: Drive away to get out of the way

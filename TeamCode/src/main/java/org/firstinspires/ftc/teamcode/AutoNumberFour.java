@@ -101,7 +101,10 @@ public class AutoNumberFour extends LinearOpMode {
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
-        waitForStart();
+        while(!opModeIsActive()&&!isStopRequested()){
+            telemetry.addData("Status", "Waiting in Init");
+            telemetry.update();
+        }
 
         robot.liftMotor.setPower(0.0);
         sleep(2000);
