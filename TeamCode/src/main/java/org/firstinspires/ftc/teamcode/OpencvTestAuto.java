@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous(name="OpencvTestAuto", group="Pushbot")
-
+@Disabled
 public class OpencvTestAuto extends LinearOpMode {
 
 

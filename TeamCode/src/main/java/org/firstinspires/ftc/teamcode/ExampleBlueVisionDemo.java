@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -39,6 +40,7 @@ import java.util.Locale;
  * Additionally, the centers of the bounding rectangles of the contours are sent to telemetry.
  */
 @TeleOp(name="Example: Blue Vision Demo")
+@Disabled
  /* If you do not agree to this license, do not download, install,
          * copy or use the software.
          * -------------------------------------------------------------------------------------

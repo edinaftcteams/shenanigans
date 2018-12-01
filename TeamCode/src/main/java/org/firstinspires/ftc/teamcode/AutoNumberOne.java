@@ -43,7 +43,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Pushbot: Shenanigans!", group="Pushbot")
+@Autonomous(name="Depot_Side_Corner", group="Pushbot")
 //@Disabled
 public class AutoNumberOne extends LinearOpMode {
 
@@ -111,12 +111,15 @@ public class AutoNumberOne extends LinearOpMode {
         encoderLiftDrive(LIFT_SPEED, 4.0, 3.0);                                 // S1: Up 3 Inches with a 3 Sec timeout
         encoderDrive(DRIVE_SPEED, -6.0, -6.0, 4.0);               // S2: Back 6 Inches with 4 Sec timeout
         encoderLiftDrive(LIFT_SPEED, -10.0, 3.0);                                // S3: Down 7 Inches with a 3 Sec timeout
-        encoderDrive(DRIVE_SPEED, -50.8, -44.5, 4.0);             // S4: Reverse 25.5 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -4.0, 4.0, 4.0);                // S5: Turn 4 Inches Left with 4 Sec timeout
-        robot.markerDrop.setPosition(.52);
+        encoderDrive(DRIVE_SPEED, -49.8, -49.8, 4.0);             // S4: Reverse 25.5 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, -6.0, 6.0, 4.0);                // S5: Turn 4 Inches Left with 4 Sec timeout
+        robot.markerDrop.setPosition(.52);                                                       // S6: Drop the marker
+        sleep(1000);
+        encoderDrive(DRIVE_SPEED, 9.0, -9.0, 4.0);                 // S7: Turn right 4 inches
+        encoderDrive(DRIVE_SPEED, 30.0, 30.0, 4.0);                // S8: Move forwards 24 inches
 
 
-        sleep(1000);     // pause for servos to move
+        //sleep(1000);     // pause for servos to move
     }
 
         /*
