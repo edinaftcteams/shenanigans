@@ -188,11 +188,11 @@ public class Test9_29_18Rev1 extends LinearOpMode {
             }
             //programs sweep arm movement
             if(gamepad2.left_stick_y >=.1) {
-                sweepMotor.setPower(.2);
+                sweepMotor.setPower(.8);
             }
             //brings up
             else if(gamepad2.left_stick_y < 0){
-                sweepMotor.setPower(-.5);
+                sweepMotor.setPower(-1.0);
             }
             else{
                 sweepMotor.setPower(0);

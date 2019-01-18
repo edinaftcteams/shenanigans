@@ -59,8 +59,12 @@ public class HardwarePushbot
     public DcMotor  rearLeft   = null;
     public DcMotor  rearRight  = null;
     public DcMotor  liftMotor  = null;
-    public DcMotor  sweepMotor = null;
+    //public DcMotor  sweepMotor = null;
+    public DcMotor  jewelMotor1= null;
+    public DcMotor  jewelMotor2= null;
     public Servo    markerDrop = null;
+    public Servo    jewelServo1= null;
+    public Servo    jewelServo2= null;
 
     //public DcMotor  leftArm     = null;
     //public Servo    leftClaw    = null;
@@ -89,24 +93,30 @@ public class HardwarePushbot
         frontLeft = hwMap.get(DcMotor.class, "Front Left");
         rearRight = hwMap.get(DcMotor.class, "Rear Right");
         rearLeft = hwMap.get(DcMotor.class, "Rear Left");
-        sweepMotor = hwMap.get(DcMotor.class, "Sweep Motor");
+        //sweepMotor = hwMap.get(DcMotor.class, "Sweep Motor");
         liftMotor = hwMap.get(DcMotor.class, "Lift Motor");
+        jewelMotor1 = hwMap.get(DcMotor.class, "Jewel Motor1");
+        jewelMotor2 = hwMap.get(DcMotor.class, "Jewel Motor2");
         
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearLeft.setDirection(DcMotor.Direction.FORWARD);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
-        sweepMotor.setDirection(DcMotor.Direction.FORWARD);
+        //sweepMotor.setDirection(DcMotor.Direction.FORWARD);
         liftMotor.setDirection(DcMotor.Direction.FORWARD);
+        jewelMotor1.setDirection(DcMotor.Direction.FORWARD);
+        jewelMotor2.setDirection(DcMotor.Direction.REVERSE);
 
         // Set all motors to zero power
         frontLeft.setPower(0);
         frontRight.setPower(0);
         rearLeft.setPower(0);
         rearRight.setPower(0);
-        sweepMotor.setPower(0);
+        //sweepMotor.setPower(0);
         liftMotor.setPower(0);
+        jewelMotor1.setPower(0);
+        jewelMotor2.setPower(0);
         //leftArm.setPower(0);
 
         // Set all motors to run without encoders.
@@ -117,6 +127,10 @@ public class HardwarePushbot
 
         // Define and initialize ALL installed servos.
         markerDrop  = hwMap.get(Servo.class, "Marker Drop");
+        // MAY not need ones below BEWAREEEEEEEEEEEEE!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        jewelServo1 = hwMap.get(Servo.class, "Jewel Servo1");
+        jewelServo2 = hwMap.get(Servo.class, "Jewel Servo2");
+
         //rightClaw = hwMap.get(Servo.class, "right_hand");
         //markerDrop.setPosition(SERVO);
         //rightClaw.setPosition(MID_SERVO);
