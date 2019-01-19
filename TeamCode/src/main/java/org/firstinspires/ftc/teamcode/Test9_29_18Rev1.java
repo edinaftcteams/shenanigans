@@ -145,8 +145,8 @@ public class Test9_29_18Rev1 extends LinearOpMode {
         while (opModeIsActive()) {
 
 
-            left = -gamepad1.left_stick_y;
-            right = -gamepad1.right_stick_y;
+            left = gamepad1.left_stick_y;
+            right = gamepad1.right_stick_y;
 
             forward = -gamepad2.left_stick_y;
 
@@ -170,34 +170,30 @@ public class Test9_29_18Rev1 extends LinearOpMode {
 
             liftUp = this.gamepad2.left_bumper;
             liftDown = this.gamepad2.right_bumper;
-            if(liftUp){
-                liftMotor.setPower(-liftPower);
-            } else if(liftDown) {
+            if (liftUp) {
                 liftMotor.setPower(liftPower);
+            } else if (liftDown) {
+                liftMotor.setPower(-liftPower);
             } else {
                 liftMotor.setPower(0.0);
             }
 
 
-
-            if(gamepad1.b){
+            if (gamepad1.b) {
                 markerDrop.setPosition(0);
             }
-            if(gamepad1.y){
+            if (gamepad1.y) {
                 markerDrop.setPosition(0.55);
             }
 
 
-
-
             //programs chassis
-            if(gamepad1.left_bumper || gamepad1.right_bumper){
-                frontRight.setPower(right/2);
-                frontLeft.setPower(left/2);
-                rearRight.setPower(right/2);
-                rearLeft.setPower(left/2);
-            }
-            else{
+            if (gamepad1.left_bumper || gamepad1.right_bumper) {
+                frontRight.setPower(right / 2);
+                frontLeft.setPower(left / 2);
+                rearRight.setPower(right / 2);
+                rearLeft.setPower(left / 2);
+            } else {
                 frontRight.setPower(right);
                 frontLeft.setPower(left);
                 rearRight.setPower(right);
@@ -205,19 +201,16 @@ public class Test9_29_18Rev1 extends LinearOpMode {
             }
 
 
-
-
             //programs jewel arm movement up and down
-            if(gamepad2.left_stick_y >=.1) {
-                jewelMotor1.setPower(.7);
+            if (gamepad2.left_stick_y >= .1) {
+                jewelMotor1.setPower(.4);
                 //jewelMotor2.setPower(-.6);
             }
             //brings up
-            else if(gamepad2.left_stick_y < 0){
-                jewelMotor1.setPower(-.9);
+            else if (gamepad2.left_stick_y < 0) {
+                jewelMotor1.setPower(-.6);
                 //jewelMotor2.setPower(1.0);
-            }
-            else{
+            } else {
                 jewelMotor1.setPower(0);
                 //jewelMotor2.setPower(0);
             }
@@ -245,19 +238,15 @@ public class Test9_29_18Rev1 extends LinearOpMode {
             }*/
 
 
-
-            
             liftPosition = liftMotor.getCurrentPosition();
-            
+
             //Drivetrain encoders
-            frontLeftPosition = frontLeft.getCurrentPosition();    
+            frontLeftPosition = frontLeft.getCurrentPosition();
             frontRightPosition = frontRight.getCurrentPosition();
             rearLeftPosition = rearRight.getCurrentPosition();
             rearRightPosition = rearRight.getCurrentPosition();
-            
-            
-            
-            
+
+
             //telemetry.addData("Target Power 2", tgtPower2);
             //telemetry.addData("Target Power", tgtPower);
             //telemetry.addData("Motor Power 2", frontLeft.getPower());
@@ -273,7 +262,8 @@ public class Test9_29_18Rev1 extends LinearOpMode {
             telemetry.addData("lift Status - up", liftUp);
             telemetry.addData("lift Status - down", liftDown);
             telemetry.update();
-    }
+        }
+
 
 
 

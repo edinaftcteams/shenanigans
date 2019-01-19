@@ -100,13 +100,13 @@ public class HardwarePushbot
         //jewelMotor2 = hwMap.get(DcMotor.class, "Jewel Motor2");
         
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
-        frontLeft.setDirection(DcMotor.Direction.FORWARD);
-        frontRight.setDirection(DcMotor.Direction.REVERSE);
-        rearLeft.setDirection(DcMotor.Direction.FORWARD);
-        rearRight.setDirection(DcMotor.Direction.REVERSE);
+        frontLeft.setDirection(DcMotor.Direction.REVERSE);
+        frontRight.setDirection(DcMotor.Direction.FORWARD);
+        rearLeft.setDirection(DcMotor.Direction.REVERSE);
+        rearRight.setDirection(DcMotor.Direction.FORWARD);
         //sweepMotor.setDirection(DcMotor.Direction.FORWARD);
-        liftMotor.setDirection(DcMotor.Direction.FORWARD);
-        jewelMotor1.setDirection(DcMotor.Direction.FORWARD);
+        liftMotor.setDirection(DcMotor.Direction.REVERSE);
+        jewelMotor1.setDirection(DcMotor.Direction.REVERSE);
         //jewelMotor2.setDirection(DcMotor.Direction.REVERSE);
 
         // Set all motors to zero power
