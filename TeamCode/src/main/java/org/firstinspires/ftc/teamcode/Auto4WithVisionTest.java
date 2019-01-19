@@ -57,7 +57,7 @@ import java.util.List;
 
 
 
-@Autonomous(name="Depot_Side_Corner_Pause", group="Pushbot")
+@Autonomous(name="Depot_Side_Corner_Pause2", group="Pushbot")
 //@Disabled
 public class Auto4WithVisionTest extends LinearOpMode {
 

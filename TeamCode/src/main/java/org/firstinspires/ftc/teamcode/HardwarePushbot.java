@@ -29,6 +29,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -61,10 +62,10 @@ public class HardwarePushbot
     public DcMotor  liftMotor  = null;
     //public DcMotor  sweepMotor = null;
     public DcMotor  jewelMotor1= null;
-    public DcMotor  jewelMotor2= null;
+    //public DcMotor  jewelMotor2= null;
     public Servo    markerDrop = null;
-    public Servo    jewelServo1= null;
-    public Servo    jewelServo2= null;
+    //public CRServo    jewelServoExtend = null;
+    //public CRServo    jewelServoStraps = null;
 
     //public DcMotor  leftArm     = null;
     //public Servo    leftClaw    = null;
@@ -96,7 +97,7 @@ public class HardwarePushbot
         //sweepMotor = hwMap.get(DcMotor.class, "Sweep Motor");
         liftMotor = hwMap.get(DcMotor.class, "Lift Motor");
         jewelMotor1 = hwMap.get(DcMotor.class, "Jewel Motor1");
-        jewelMotor2 = hwMap.get(DcMotor.class, "Jewel Motor2");
+        //jewelMotor2 = hwMap.get(DcMotor.class, "Jewel Motor2");
         
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
@@ -106,7 +107,7 @@ public class HardwarePushbot
         //sweepMotor.setDirection(DcMotor.Direction.FORWARD);
         liftMotor.setDirection(DcMotor.Direction.FORWARD);
         jewelMotor1.setDirection(DcMotor.Direction.FORWARD);
-        jewelMotor2.setDirection(DcMotor.Direction.REVERSE);
+        //jewelMotor2.setDirection(DcMotor.Direction.REVERSE);
 
         // Set all motors to zero power
         frontLeft.setPower(0);
@@ -116,7 +117,7 @@ public class HardwarePushbot
         //sweepMotor.setPower(0);
         liftMotor.setPower(0);
         jewelMotor1.setPower(0);
-        jewelMotor2.setPower(0);
+        //jewelMotor2.setPower(0);
         //leftArm.setPower(0);
 
         // Set all motors to run without encoders.
@@ -128,8 +129,8 @@ public class HardwarePushbot
         // Define and initialize ALL installed servos.
         markerDrop  = hwMap.get(Servo.class, "Marker Drop");
         // MAY not need ones below BEWAREEEEEEEEEEEEE!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        jewelServo1 = hwMap.get(Servo.class, "Jewel Servo1");
-        jewelServo2 = hwMap.get(Servo.class, "Jewel Servo2");
+        //jewelServoExtend = hwMap.get(CRServo.class, "Jewel Servo Extend");
+        //jewelServoStraps = hwMap.get(CRServo.class, "Jewel Servo Straps");
 
         //rightClaw = hwMap.get(Servo.class, "right_hand");
         //markerDrop.setPosition(SERVO);

@@ -19,6 +19,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.Gyroscope;
 import com.qualcomm.robotcore.hardware.Blinker;
@@ -45,15 +46,18 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Test9_29_18Rev1 extends LinearOpMode {
     private Gyroscope imu;
-    private DcMotor frontLeft;
-    private DcMotor frontRight;
-    private DcMotor rearLeft;
-    private DcMotor rearRight;
-    private DcMotor liftMotor;
-    private DcMotor sweepMotor;
-    private Servo markerDrop;
-    private Blinker expansion_Hub_2;
-    private Blinker expansion_Hub_3;
+    private DcMotor   frontLeft;
+    private DcMotor   frontRight;
+    private DcMotor   rearLeft;
+    private DcMotor   rearRight;
+    private DcMotor   liftMotor;
+    private DcMotor   jewelMotor1;
+    //private DcMotor   jewelMotor2;
+    private Servo     markerDrop;
+    //public  CRServo     jewelServoExtend;
+    //public  CRServo     jewelServoStraps;
+    private Blinker   expansion_Hub_2;
+    private Blinker   expansion_Hub_3;
 
 
 
@@ -67,11 +71,14 @@ public class Test9_29_18Rev1 extends LinearOpMode {
         frontRight = hardwareMap.get(DcMotor.class, "Front Right");
         rearLeft = hardwareMap.get(DcMotor.class, "Rear Left");
         rearRight = hardwareMap.get(DcMotor.class, "Rear Right");
-        sweepMotor = hardwareMap.get(DcMotor.class, "Sweep Motor");
         liftMotor = hardwareMap.get(DcMotor.class, "Lift Motor");
+        jewelMotor1 = hardwareMap.get(DcMotor.class, "Jewel Motor1");
+        //jewelMotor2 = hardwareMap.get(DcMotor.class, "Jewel Motor2");
         
         //***Servos***
         markerDrop = hardwareMap.get(Servo.class, "Marker Drop");
+        //jewelServoExtend = hardwareMap.crservo.get("Jewel Servo Extend");
+        //jewelServoStraps = hardwareMap.crservo.get("Jewel Servo Straps");
         
         //***Controllers***
         expansion_Hub_2 = hardwareMap.get(Blinker.class, "Expansion Hub 2");
@@ -83,9 +90,11 @@ public class Test9_29_18Rev1 extends LinearOpMode {
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         rearLeft.setDirection(DcMotor.Direction.FORWARD);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
-        sweepMotor.setDirection(DcMotor.Direction.FORWARD);
         liftMotor.setDirection(DcMotor.Direction.FORWARD);
-        
+        //sweep motor has now become jewelmotor1
+        jewelMotor1.setDirection(DcMotor.Direction.FORWARD);
+        //jewelMotor2.setDirection(DcMotor.Direction.REVERSE);
+
         //***Reset Encoders***
         frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -101,6 +110,9 @@ public class Test9_29_18Rev1 extends LinearOpMode {
      
         //Should enable brakemode on the elevator motor
         liftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        // We need to see if this works for keeping the sweep motor down!!!!!!!!!!!!!!!
+        //jewelServoExtend.setPower(-1);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -165,14 +177,19 @@ public class Test9_29_18Rev1 extends LinearOpMode {
             } else {
                 liftMotor.setPower(0.0);
             }
-            
+
+
+
             if(gamepad1.b){
                 markerDrop.setPosition(0);
             }
-            
             if(gamepad1.y){
                 markerDrop.setPosition(0.55);
             }
+
+
+
+
             //programs chassis
             if(gamepad1.left_bumper || gamepad1.right_bumper){
                 frontRight.setPower(right/2);
@@ -186,17 +203,48 @@ public class Test9_29_18Rev1 extends LinearOpMode {
                 rearRight.setPower(right);
                 rearLeft.setPower(left);
             }
-            //programs sweep arm movement
+
+
+
+
+            //programs jewel arm movement up and down
             if(gamepad2.left_stick_y >=.1) {
-                sweepMotor.setPower(.8);
+                jewelMotor1.setPower(.7);
+                //jewelMotor2.setPower(-.6);
             }
             //brings up
             else if(gamepad2.left_stick_y < 0){
-                sweepMotor.setPower(-1.0);
+                jewelMotor1.setPower(-.9);
+                //jewelMotor2.setPower(1.0);
             }
             else{
-                sweepMotor.setPower(0);
+                jewelMotor1.setPower(0);
+                //jewelMotor2.setPower(0);
             }
+
+
+            //programs extend direction in or out
+            /*if(gamepad2.dpad_up){
+                jewelServoExtend.setPower(0);
+            }
+            else {
+                jewelServoExtend.setPower(-1);
+            }
+
+            //programs straps forward, backwards, or stationary
+            if(gamepad2.x){
+                jewelServoStraps.setPower(1);
+            }
+
+            if(gamepad2.y){
+                jewelServoStraps.setPower(0);
+            }
+
+            if (gamepad2.b){
+                jewelServoStraps.setPower(-1);
+            }*/
+
+
 
             
             liftPosition = liftMotor.getCurrentPosition();
